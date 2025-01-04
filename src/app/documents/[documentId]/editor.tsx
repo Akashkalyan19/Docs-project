@@ -2,16 +2,25 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
+import { Color } from "@tiptap/extension-color";
 // import ImageResize from "tiptap-extension-image-resize";
+import Link from "@tiptap/extension-link";
+import FontFamily from "@tiptap/extension-font-family";
 import ImageResize from "tiptap-extension-resize-image";
+import Highlight from "@tiptap/extension-highlight";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
+import TextStyle from "@tiptap/extension-text-style";
 import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
+import TextAlign from "@tiptap/extension-text-align";
 import TableRow from "@tiptap/extension-table-row";
 import Underline from "@tiptap/extension-underline";
 import { useEditorStore } from "@/store/use-editor-store";
+
+import { FontSizeExtension } from "@/extension/font-size";
+import { LineHeightExtension } from "@/extension/line-height";
 export const Editor = () => {
   const { setEditor } = useEditorStore();
   const editor = useEditor({
@@ -49,7 +58,19 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      FontSizeExtension,
+      LineHeightExtension,
+      Color,
+      FontFamily,
+      TextStyle,
+      TextAlign.configure({ types: ["heading", "paragraph"] }),
+      Highlight.configure({ multicolor: true }),
       Underline,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+        defaultProtocol: "https",
+      }),
       Image,
       ImageResize,
       Table,
