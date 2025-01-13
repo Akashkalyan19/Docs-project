@@ -18,13 +18,15 @@ import TextAlign from "@tiptap/extension-text-align";
 import TableRow from "@tiptap/extension-table-row";
 import Underline from "@tiptap/extension-underline";
 import { useEditorStore } from "@/store/use-editor-store";
-
+import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import { FontSizeExtension } from "@/extension/font-size";
 import { LineHeightExtension } from "@/extension/line-height";
+import { Threads } from "./threads";
 export const Editor = () => {
-  immediatelyRender: false;
+  const liveblocks = useLiveblocksExtension();
   const { setEditor } = useEditorStore();
   const editor = useEditor({
+    immediatelyRender: false,
     onCreate({ editor }) {
       setEditor(editor);
     },
@@ -58,7 +60,10 @@ export const Editor = () => {
       },
     },
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        history: false,
+      }),
+      liveblocks,
       FontSizeExtension,
       LineHeightExtension,
       Color,
@@ -89,6 +94,7 @@ export const Editor = () => {
       <Ruler />
       <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
         <EditorContent editor={editor} />
+        <Threads editor={editor} />
       </div>
     </div>
   );
