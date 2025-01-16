@@ -17,12 +17,15 @@ import TableHeader from "@tiptap/extension-table-header";
 import TextAlign from "@tiptap/extension-text-align";
 import TableRow from "@tiptap/extension-table-row";
 import Underline from "@tiptap/extension-underline";
+import { useStorage } from "@liveblocks/react";
 import { useEditorStore } from "@/store/use-editor-store";
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import { FontSizeExtension } from "@/extension/font-size";
 import { LineHeightExtension } from "@/extension/line-height";
 import { Threads } from "./threads";
 export const Editor = () => {
+  const leftMargin = useStorage((root) => root.leftMargin);
+  const rightMargin = useStorage((root) => root.rightMargin);
   const liveblocks = useLiveblocksExtension();
   const { setEditor } = useEditorStore();
   const editor = useEditor({
@@ -54,7 +57,7 @@ export const Editor = () => {
 
     editorProps: {
       attributes: {
-        style: "padding-left: 56px; padding-right: 56px",
+        style: `padding-left:${leftMargin ?? 56}px; padding-right:${rightMargin ?? 56}px`,
         class:
           "focus:outline-none print:borer-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor-text ",
       },

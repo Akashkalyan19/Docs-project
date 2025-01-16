@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useMutation } from "convex/react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,6 +23,7 @@ interface RemoveDialogProps {
   children: React.ReactNode;
 }
 export const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
+  const router = useRouter();
   const remove = useMutation(api.documents.removeById);
   const [isRemoving, setIsRemoving] = useState(false);
   return (
@@ -46,7 +48,10 @@ export const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
               setIsRemoving(true);
               remove({ id: documentId })
                 .catch(() => toast.error("Something went wrong"))
-                .then(() => toast.success("Document removed"))
+                .then(() => {
+                  toast.success("Document removed");
+                  router.push("/");
+                })
                 .finally(() => setIsRemoving(false));
             }}
           >
