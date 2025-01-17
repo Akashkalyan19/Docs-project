@@ -52,7 +52,7 @@ export const TemplatesGallery = () => {
                     disabled={isCreating}
                     // Add proper inital content
                     onClick={() => {
-                      onTemplateClick(template.label, "");
+                      onTemplateClick(template.label, template.initialContent);
                     }}
                     style={{
                       backgroundImage: `url(${template.imageUrl})`,

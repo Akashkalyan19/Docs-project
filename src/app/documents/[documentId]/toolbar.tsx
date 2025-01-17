@@ -26,7 +26,6 @@ import {
   AlignLeftIcon,
   ListIcon,
   ListOrderedIcon,
-  List,
   MinusIcon,
   PlusIcon,
   ListCollapseIcon,

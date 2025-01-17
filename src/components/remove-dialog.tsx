@@ -15,7 +15,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Id } from "../../convex/_generated/dataModel";
-import { AlertDescription } from "./ui/alert";
 import { api } from "../../convex/_generated/api";
 
 interface RemoveDialogProps {
