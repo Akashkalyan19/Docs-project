@@ -6,7 +6,6 @@ import { Color } from "@tiptap/extension-color";
 import { Ruler } from "./ruler";
 import Link from "@tiptap/extension-link";
 import FontFamily from "@tiptap/extension-font-family";
-import ImageResize from "tiptap-extension-resize-image";
 import Highlight from "@tiptap/extension-highlight";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
@@ -93,7 +92,6 @@ export const Editor = ({ initialContent }: EditorProps) => {
         defaultProtocol: "https",
       }),
       Image,
-      ImageResize,
       Table,
       TableCell,
       TableHeader,

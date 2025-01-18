@@ -1,4 +1,4 @@
-"use client ";
+"use client";
 import { Preloaded, usePreloadedQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { Editor } from "./editor";

@@ -49,7 +49,7 @@ export const DocumentInput = ({ title, id }: DocumentInputProps) => {
   return (
     <div className="flex items-center gap-2 ">
       {isEditing ? (
-        <form onSubmit={handleSubmit} className="flex items-center gap-2">
+        <form onSubmit={handleSubmit} className="relative w-fit max-w-[50ch]">
           <span className="invisible whitespace-pre px-1.5 text-lg">
             {value || " "}
           </span>
